@@ -1,0 +1,41 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background: #4B0082;
+}
+
+.deslizar{
+    overflow-y: auto;
+}
+
+.confirmar{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.confirmar img{
+    width: 300px;
+    margin: auto;
+}
+
+.botones-formulario{
+    width: 10px;
+    height: 20px;
+    align-items: center;
+    margin: auto;
+}
+
+.botones-formulario input{
+    width: 80px;
+    text-align: center;
+    border: none;
+}
+
+
+
+
