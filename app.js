@@ -1,6 +1,9 @@
+
 const seccion_productos = document.getElementById("contenedor-juegos");
 const seccion_carrito = document.getElementById("contenedor-carrito");
 let botonconfirmar = document.getElementById("confirmarboton");
+let cancelarboton = document.getElementById("cancelarboton");
+let opiniones = document.getElementById("opiniones")
 
 class Juego {
     //constructor
@@ -52,19 +55,6 @@ JuegosLista.push(new Juego("TF2", 133, 750, "Acción", "https://www.gamerfocus.c
 JuegosLista.push(new Juego("Apex Legends", 230, 750, "Acción", "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/apex-featured-image-16x9.jpg.adapt.crop16x9.1023w.jpg", 14))
 JuegosLista.push(new Juego("Stray", 122, 750, "Acción", "https://prod.assets.earlygamecdn.com/images/Stray1A.jpg?mtime=1664787525", 15))
 
-const juegosJson = JSON.stringify(JuegosLista);
-localStorage.setItem("Juegos", juegosJson)
-
-const TarjetasLista = [];
-
-TarjetasLista.push(new Juego("ROBLOX", 90, 150, "FPS"))
-TarjetasLista.push(new Juego("Steam", 50, 350, "-"))
-TarjetasLista.push(new Juego("Minecraft", 60, 200, "Aventura"))
-TarjetasLista.push(new Juego("Valorant", 200, 400, "FPS"))
-TarjetasLista.push(new Juego("Google Play", 150, 100, "-"))
-TarjetasLista.push(new Juego("PS4", 20, 330, "-"))
-TarjetasLista.push(new Juego("XBOX", 5, 750, "-"))
-
 
 
 JuegosLista.forEach(juego => {
@@ -88,6 +78,29 @@ botonconfirmar.addEventListener("click", () =>{
     localStorage.removeItem("CarritoStorage");
     seccion_carrito.innerHTML = "";
     carritoLista = [];
+    Swal.fire(
+        'Felicidades',
+        'Compra realizada con éxito!',
+        'success'
+      )
+})
+
+cancelarboton.addEventListener("click", () => {
+    Swal.fire(
+        'Ups!',
+        'Compra cancelada!',
+        'error'
+      )
+})
+
+JuegosLista.forEach(juego => {
+    let confirmarjuego = document.getElementById(`juego${juego.id}`);
+    confirmarjuego.addEventListener("click", () => {
+        Toastify({
+            text: "Añadido al carrito",
+            duration: 1500
+            }).showToast();
+    })
 })
 
 const obtenerCarrito = localStorage.getItem("CarritoStorage");
@@ -153,5 +166,4 @@ JuegosLista.forEach(juego => {
         })
     })
 })
-
 
